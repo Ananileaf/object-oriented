@@ -6,7 +6,7 @@ class Print :Scan
 	public:
 		Print();
 		~Print();
-		queue<string> que2;
+		queue<string> que;
 		void putqueue(); 
 	protected:
 };

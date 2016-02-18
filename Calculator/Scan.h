@@ -1,4 +1,4 @@
-#ifndef SCAN_H
+﻿#ifndef SCAN_H
 #define SCAN_H
 #include<queue>
 #include<string>

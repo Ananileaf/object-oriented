@@ -11,10 +11,10 @@ Print::~Print()
 
 void Print::putqueue()
 {
-	while(que2.size())
+	while(que.size())//或者用.empty(),只要队列不为空,就一直循环下去 
 	{
-		std::cout<<que2.front()<<endl;	 
-		que2.pop();
+		std::cout<<que.front()<<endl;	//输出 
+		que.pop();//输出一个后，清空一个； 
 	}
 
 }
