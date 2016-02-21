@@ -1,4 +1,4 @@
-﻿#include "Scan.h"
+#include "Scan.h"
 #include<cstring>
 #include<iostream>
 #include<queue>
