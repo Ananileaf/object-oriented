@@ -6,7 +6,7 @@
 using namespace std;
 int main()
 {
-	Scan get_scanf;//..临时传代码改好看一点的 
+	Scan get_scanf;
 	Print put_printf;//同理，定义 
 	get_scanf.ToStringQueue(get_scanf.GetString());//调用函数输入 
 	/*这里说一下，为什么不直接输入字符串,而是调用了一个函数,是对原始字符串数据进行封装

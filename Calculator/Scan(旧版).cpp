@@ -1,5 +1,6 @@
 ﻿#include "Scan.h"
 #include<cstring>
+#include<string>
 #include<iostream>
 #include<queue>
 using namespace std;
