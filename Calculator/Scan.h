@@ -1,4 +1,12 @@
-﻿#ifndef SCAN_H
+﻿/************************************************************
+  FileName: 	Scan.h
+  Author:       031502248
+  Date:         2016/2/16
+  History:        
+  <author>     <time>   <version>      <desc>
+  03150248     16/3/23     2.0       修改代码规范  
+***********************************************************/
+#ifndef SCAN_H
 #define SCAN_H
 #include<queue>
 #include<string>

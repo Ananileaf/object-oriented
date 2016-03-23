@@ -1,79 +1,155 @@
-ï»¿#include "Scan.h"
+#include "Scan.h"
 #include<cstring>
 #include<string>
 #include<iostream>
 #include<queue>
 using namespace std;
-Scan::Scan() {
+Scan::Scan()
+{
 }
 
-Scan::~Scan() {
+Scan::~Scan()
+{
 }
-string Scan::GetString() {
-	cin>>s;
+
+/*************************************************************
+  functionname:    GetString
+  Description:     ÓÃÓÚÊäÈëÒ»¸östringÀàºÍ·µ»ØÕâ¸östringÀà,Ä¿
+                   µÄÊÇÎªÁË±ÜÃâÍâ½çÖ±½Ó½Ó´¥ÀàÖĞµÄstring±äÁ¿ 
+  Input:           NULL
+  Return:          string s:ÀàÖĞµÄË½ÓĞstringÀàĞÍµÄ±äÁ¿ 
+  Others:          NULL
+**************************************************************/
+string Scan::GetString()
+{
+	cin >> s;
 	return s;
 }
-void Scan::ToStringQueue(string input) {
-	string temp[100];//é»˜è®¤ä¸ºç©ºä¸²ï¼Œç”¨æ¥å­˜å‚¨æ•°å­—å’Œå­—ç¬¦ï¼Œä¼ ç»™é˜Ÿåˆ—
-	bool flag=false;//åˆ¤æ–­æ˜¯å¦å­˜åœ¨æ•°è¶…è¿‡10ä½
-	int n=input.size(),coun=0;//nç”¨äºè®°å½•å­—ç¬¦ä¸²é•¿åº¦,counæ¥æ§åˆ¶å°†å­—ç¬¦å­˜å…¥tempçš„ä¸åŒæ•°ç»„ä¸­
-	temp[coun]+=input[0];//ç›´æ¥å…ˆå­˜å‚¨è¾“å…¥å­—ç¬¦ä¸²çš„ç¬¬ä¸€ä¸ªå­—ç¬¦
-	for(int i=1; i<n; i++) { //éå†å­—ç¬¦ä¸²æ‰€æœ‰å­—ç¬¦(é™¤äº†ç¬¬ä¸€ä¸ª)
-		if(flag) break;//å¦‚æœå­˜åœ¨æ•°è¶…è¿‡10ä½,ç›´æ¥è·³å‡ºå¾ªç¯
-		/*æ•°*/	if(input[i]>='0'&&input[i]<='9'||input[i]=='.') { //åˆ¤æ–­å½“å‰å­—ç¬¦æ˜¯ä¸æ˜¯æ•°å­—æˆ–è€…å°æ•°ç‚¹
-			if((input[i-1]>='0'&&input[i-1]<='9')||input[i-1]=='.') {
-				//åˆ¤æ–­å‰ä¸€ä¸ªå­—ç¬¦æ˜¯ä¸æ˜¯æ•°å­—æˆ–è€…å°æ•°ç‚¹ï¼Œå¦‚æœæ˜¯,åˆ™ç´¯è®¡å­˜å‚¨ï¼Œå…ˆä¸ä¼ ç»™é˜Ÿåˆ—
-				temp[coun]+=input[i];
-				if(temp[coun].size()>10) { //å½“å‰tempæ•°ç»„å­˜çš„ä¸ºæ•°å­—,åˆ¤æ–­å½“å‰tempæ•°ç»„ä¸­çš„æ•°å­—æ˜¯å¦è¶…è¿‡10ä½
-					//è¶…è¿‡10ä½,åˆ¤æ–­æ˜¯ä¸æ˜¯å¸¦ç¬¦å·,å¦‚æœå¸¦ç¬¦å·ï¼Œåˆ™è¦è¶…è¿‡11ä½
-					if(temp[coun][0]=='-'||temp[coun][0]=='+') {
-						if(temp[coun].size()>11)  flag=true;
-					} else flag=true;
-				}
-			} else { //å‰ä¸€ä¸ªæ˜¯ç¬¦å·,ä¸‹é¢åˆ†æƒ…å†µè®¨è®º    100*(20+1)*1.00000000  è¿™ä¸ªæ˜¯æµ‹è¯•æ•°æ®
-				if(input[i-1]=='+'||input[i-1]=='-') { //å¦‚æœå‰é¢ç¬¦å·æ˜¯+,æˆ–è€…-ï¼Œå†è€ƒè™‘2ç§æƒ…å†µï¼Œ
-					if(i-2<0||input[i-2]<'0'||input[i-2]>'9') { //å¦‚æœç¬¦å·å‰ä¸æ˜¯æ•°å­—,æˆ–è€…å·²ç»åˆ°å­—ç¬¦ä¸²å¤´äº†
-						temp[coun]+=input[i];//é‚£ä¹ˆè¯¥ç¬¦å·è¡¨ç¤ºæ•°å­—çš„æ­£è´Ÿï¼Œå­˜å‚¨åˆ°temp,å…ˆä¸ä¼ ç»™é˜Ÿåˆ—
-					} else { //å¦‚æœç¬¦å·å‰é¢æ˜¯æ•°å­—ï¼Œé‚£ä¹ˆè¯¥ç¬¦å·è¡¨ç¤ºè¿ç®—ç¬¦
-						Scan::que.push(temp[coun++]);
-						temp[coun]+=input[i];
-					}
-				}//å‰é¢ç¬¦å·ä¸æ˜¯+ï¼Œ-ï¼Œå¯ä»¥æŠŠtempä¼ åˆ°é˜Ÿåˆ—ï¼Œæ›´æ–°coun
-				else {
-					if(temp[coun].size()>10) { //åˆ¤æ–­æ˜¯å¦è¶…è¿‡10ä½ï¼ŒåŒç†
-						if(temp[coun][0]=='-'||temp[coun][0]=='+') {
-							if(temp[coun].size()>11)  flag=true;
-						} else flag=true;
-					}
 
-					Scan::que.push(temp[coun++]);
-					temp[coun]+=input[i];
+/*************************************************************
+  functionname:    ToStringQueue
+  Description:     ½«ÊäÈëµÄ×Ö·û´®,Öğ¸öµÄ×Ö·ûÉ¨ÃèÕâ£¬
+                   ½«Êı×ÖºÍ·ûºÅÌáÈ¡³öÀ´·Ö±ğ´æÈë¶ÓÁĞ 
+  Input:           string input:ÊäÈë×Ö·û´®
+  Return:         no return 
+  Others:         NULL
+**************************************************************/
+void Scan::ToStringQueue(string input)
+{
+	string temp[100];               //Ä¬ÈÏÎª¿Õ´®£¬ÓÃÀ´´æ´¢Êı×ÖºÍ×Ö·û£¬´«¸ø¶ÓÁĞ
+	bool flag = false;              //ÅĞ¶ÏÊÇ·ñ´æÔÚÊı³¬¹ı10Î»
+	bool flag_dot = false           //ÅĞ¶ÏÊÇ·ñ´øĞ¡Êıµã 
+	int n = input.size(), coun = 0;
+	temp[coun] += input[0];         //Ö±½ÓÏÈ´æ´¢ÊäÈë×Ö·û´®µÄµÚÒ»¸ö×Ö·û
+	for (int i = 1; i < n; i++)   
+	{
+		if (flag)
+		{
+			break;
+	    } 	
+		if (input[i] >= '0' && input[i] <= '9' || input[i] == '.')   
+		{
+			if(input[i] == '.')
+			{
+				flag_dot = true;
+			}
+			if ((input[i-1] >= '0'&&input[i-1] <= '9')||input[i-1] == '.')
+			{
+				if(input[i-1] == '.')
+		 	    {
+				    flag_dot = true;
+			    }
+								
+				/*ÅĞ¶ÏÇ°Ò»¸ö×Ö·ûÊÇ²»ÊÇÊı×Ö»òÕßĞ¡Êıµã£¬Èç¹ûÊÇ,ÔòÀÛ¼Æ´æ´¢£¬ÏÈ²»´«¸ø¶ÓÁĞ*/
+				temp[coun] += input[i];
+				if (temp[coun].size() > 10)   //µ±Ç°tempÊı×é´æµÄÎªÊı×Ö,ÅĞ¶Ïµ±Ç°tempÊı×éÖĞµÄÊı×ÖÊÇ·ñ³¬¹ı10Î»
+				{
+					
+					/*³¬¹ı10Î»,ÅĞ¶ÏÊÇ²»ÊÇ´ø·ûºÅ,Èç¹û´ø·ûºÅ£¬ÔòÒª³¬¹ı11Î»*/
+					if(temp[coun][0] == '-' || temp[coun][0] == '+')
+					{
+						if(temp[coun].size() == 12 && flag_dot == true)
+						{
+						}
+						else if(temp[coun].size() > 11)
+						{
+							flag == true;
+						}
+					}
+					else flag = true;
 				}
 			}
-		} else { //å¦‚æœå½“å‰å­—ç¬¦æ˜¯ç¬¦å·,å°†tempä¼ å…¥é˜Ÿåˆ—ï¼Œæ›´æ–°coun;
-			if(temp[coun].size()>10) {
+			else    //Ç°Ò»¸ö×Ö·ûÊÇ·ûºÅ,ÏÂÃæ·ÖÇé¿öÌÖÂÛ
+			{
+				if (input[i-1] == '+' || input[i-1] == '-')    
+				{
+					if (i-2<0 || input[i-2]<'0' || input[i-2] > '9')    
+					{
+						temp[coun] += input[i];    
+					}
+					else    //Èç¹û·ûºÅÇ°ÃæÊÇÊı×Ö£¬ÄÇÃ´¸Ã·ûºÅ±íÊ¾ÔËËã·û
+					{
+						Scan::que.push(temp[coun++]);
+						flag_dot = false;
+						temp[coun] += input[i];
+					}
+				}
+				else    //Ç°Ãæ·ûºÅ²»ÊÇ+£¬-£¬¿ÉÒÔ°Ñtemp´«µ½¶ÓÁĞ£¬¸üĞÂcoun
+				{
+					if (temp[coun].size() > 10)   //ÅĞ¶ÏÊÇ·ñ³¬¹ı10Î»£¬Í¬Àí
+					{
+						if (temp[coun][0] == '-' || temp[coun][0] == '+')
+						{
+							if (temp[coun].size() > 11)  flag = true;
+						}
+						else
+						{
+							flag = true;
+						 } 
+					}
+					Scan::que.push(temp[coun++]);
+					flag_dot = false;
+					temp[coun] += input[i];
+				}
+			}
+		}
+		else     //Èç¹ûµ±Ç°×Ö·ûÊÇ·ûºÅ,½«temp´«Èë¶ÓÁĞ£¬¸üĞÂcoun;
+		{
+			if (temp[coun].size() > 10)
+			{
 
-				if(temp[coun][0]=='-'||temp[coun][0]=='+') {
-					if(temp[coun].size()>11)  flag=true;
-				} else flag=true;
+				if (temp[coun][0] == '-' || temp[coun][0] == '+')
+				{
+					if (temp[coun].size() > 11)  flag = true;
+				}
+				else flag = true;
 			}
 			Scan::que.push(temp[coun]);
+			flag_dot = false;
 			coun++;
-			temp[coun]+=input[i];
+			temp[coun] += input[i];
 		}
 
-	}//è·³å‡ºå¾ªç¯äº†ï¼›
+	} 
 
-	if(temp[coun].size()>10) { //æœ€åä¸€ä¸ªtempè¿˜æ²¡æœ‰å­˜,åˆ¤æ–­åŒç†
-		if(temp[coun][0]=='-'||temp[coun][0]=='+') {
-			if(temp[coun].size()>11)  flag=true;
-		} else flag=true;
+	if (temp[coun].size() > 10)    //×îºóÒ»¸ötemp»¹Ã»ÓĞ´æ,ÅĞ¶ÏÍ¬Àí
+	{
+		if (temp[coun][0] == '-' || temp[coun][0] == '+')
+		{
+			if (temp[coun].size() > 11)  flag = true;
+		}
+		else flag = true;
 	}
-	Scan::que.push(temp[coun]);//å­˜æœ€åä¸€ä¸ª
+	Scan::que.push(temp[coun]);//´æ×îºóÒ»¸ö
 	coun++;
-	if(flag) { //å¦‚æœè¶…è¿‡10ä½,é‚£ä¹ˆï¼ŒæŠŠåŸæ¥å­˜è¿›å»çš„éƒ½æ¸…ç©ºï¼Œpushä¸Š ä¸‹é¢çš„è­¦å‘Š.
-		while(que.size()) que.pop();
+	if (flag)   //Èç¹û³¬¹ı10Î»,ÄÇÃ´£¬°ÑÔ­À´´æ½øÈ¥µÄ¶¼Çå¿Õ£¬pushÉÏ ÏÂÃæµÄ¾¯¸æ.
+	{
+		while (que.size())
+		{
+			que.pop();
+	    } 
 		que.push("error:You can enter the number of digits can not be more than 10");
 	}
 }
+
 

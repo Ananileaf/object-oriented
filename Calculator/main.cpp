@@ -1,16 +1,18 @@
-ï»¿#include <iostream>
+#include <iostream>
 #include<cstdlib>
 #include"Scan.h"
 #include"Print.h"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
-int main() {
+int main()
+{
 	Scan get_scanf;
-	Print put_printf;//åŒç†ï¼Œå®šä¹‰
-	get_scanf.ToStringQueue(get_scanf.GetString());//è°ƒç”¨å‡½æ•°è¾“å…¥
-	/*è¿™é‡Œè¯´ä¸€ä¸‹ï¼Œä¸ºä»€ä¹ˆä¸ç›´æ¥è¾“å…¥å­—ç¬¦ä¸²,è€Œæ˜¯è°ƒç”¨äº†ä¸€ä¸ªå‡½æ•°,æ˜¯å¯¹åŸå§‹å­—ç¬¦ä¸²æ•°æ®è¿›è¡Œå°è£…
-	 è™½ç„¶æœ¬é¢˜æ„ä¹‰ä¸å¤§ï¼Œåªæ˜¯ä½“ç°ä¸€ä¸‹ç±»çš„ä¿å¯†æ€§è€Œå·²*/
-	put_printf.que=get_scanf.que;//æœ¬æ¥è¿™é‡Œä¹Ÿæ˜¯ï¼Œå«Œéº»çƒ¦å°±æ²¡å¼„äº†
-	put_printf.putqueue();//è°ƒç”¨å‡½æ•°è¾“å‡º
+	Print put_printf;
+	
+	/*µ÷ÓÃ GetString() º¯Êı,ÀûÓÃÆä·µ»ØÖµ½«ÊäÈëµÄ×Ö·û´®´«µİ¸ø ToStringQueue() º¯Êı*/
+	get_scanf.ToStringQueue(get_scanf.GetString());	
+	put_printf.que = get_scanf.que;
+	put_printf.putqueue();    //µ÷ÓÃº¯ÊıÊä³ö·ÖºÃµÄÊı×ÖÓë×Ö·û 
 	system("pause");
 }
+

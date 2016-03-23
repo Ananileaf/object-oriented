@@ -1,16 +1,27 @@
-ï»¿#include "Print.h"
+#include "Print.h"
 #include<iostream>
-Print::Print() {
+Print::Print()
+{
 
 }
 
-Print::~Print() {
+Print::~Print()
+{
 }
 
-void Print::putqueue() {
-	while(que.size()) { //æˆ–è€…ç”¨.empty(),åªè¦é˜Ÿåˆ—ä¸ä¸ºç©º,å°±ä¸€ç›´å¾ªç¯ä¸‹å»
-		std::cout<<que.front()<<endl;	//è¾“å‡º
-		que.pop();//è¾“å‡ºä¸€ä¸ªåï¼Œæ¸…ç©ºä¸€ä¸ªï¼›
+/*************************************************************
+  functionname:    putqueue
+  Description:     Êä³öÀàÖĞË½ÓĞ³ÉÔ±±äÁ¿ÖĞµÄqueueÀàÖĞµÄÔªËØ 
+  Input:           NULL
+  Return:          no return 
+  Others:          NULL
+**************************************************************/
+void Print::putqueue()
+{
+	while (que.size())   //»òÕßÓÃque.empty(),Ö»Òª¶ÓÁĞ²»Îª¿Õ,¾ÍÒ»Ö±Ñ­»·ÏÂÈ¥
+	{
+		std::cout << que.front(); 
 	}
-
+	return ; 
 }
+
