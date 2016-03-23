@@ -39,10 +39,10 @@ void Scan::ToStringQueue(string input)
 	
 	/*temp作为中间变量,暂时存储将要存入队列中的元素,重复利用temp,或者用temp[100]与int类型变量coun,利用数组分别存储数字与字符,再存入队列 */
 	string temp = "";
-	bool flag = false;			//判断是否存在超过十位的数
-	bool flag_dot = false;		//判断是否存在小数点 
-	int n = input.size();		//n表示字符串的长度
-	for (int i = 0; i<n; i++) 	//遍历字符串中的字符 
+	bool flag = false;           //判断是否存在超过十位的数
+	bool flag_dot = false;       //判断是否存在小数点 
+	int n = input.size();        //n表示字符串的长度
+	for (int i = 0; i<n; i++)    //遍历字符串中的字符 
 	{ 
 		if (flag)    
 		{ 

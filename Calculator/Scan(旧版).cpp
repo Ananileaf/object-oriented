@@ -132,7 +132,7 @@ void Scan::ToStringQueue(string input)
 
 	} 
 
-	if (temp[coun].size() > 10)    //最后一个temp还没有存,判断同理
+	if (temp[coun].size() > 10)    
 	{
 		if (temp[coun][0] == '-' || temp[coun][0] == '+')
 		{
@@ -140,9 +140,9 @@ void Scan::ToStringQueue(string input)
 		}
 		else flag = true;
 	}
-	Scan::que.push(temp[coun]);//存最后一个
+	Scan::que.push(temp[coun]);
 	coun++;
-	if (flag)   //如果超过10位,那么，把原来存进去的都清空，push上 下面的警告.
+	if (flag)    
 	{
 		while (que.size())
 		{
