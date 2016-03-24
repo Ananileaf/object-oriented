@@ -18,9 +18,10 @@ Print::~Print()
 **************************************************************/
 void Print::putqueue()
 {
-	while (que.size())   //或者用que.empty(),只要队列不为空,就一直循环下去
+	while (!que.empty())
 	{
-		std::cout << que.front(); 
+		std::cout << que.front() << endl; 
+		que.pop(); 
 	}
 	return ; 
 }

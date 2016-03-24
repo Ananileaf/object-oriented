@@ -46,7 +46,7 @@ void Scan::ToStringQueue(string input)
 		if (flag)
 		{
 			break;
-	    } 	
+		} 	
 		if (input[i] >= '0' && input[i] <= '9' || input[i] == '.')   
 		{
 			if(input[i] == '.')
@@ -100,7 +100,10 @@ void Scan::ToStringQueue(string input)
 					{
 						if (temp[coun][0] == '-' || temp[coun][0] == '+')
 						{
-							if (temp[coun].size() > 11)  flag = true;
+							if (temp[coun].size() > 11)
+							{
+								flag = true;
+							}  
 						}
 						else
 						{
@@ -147,7 +150,7 @@ void Scan::ToStringQueue(string input)
 		while (que.size())
 		{
 			que.pop();
-	    } 
+		} 
 		que.push("error:You can enter the number of digits can not be more than 10");
 	}
 }

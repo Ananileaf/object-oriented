@@ -119,8 +119,7 @@ void Scan::ToStringQueue(string input)
 		{
 			que.pop();
 		}    
-		que.push("error:You can enter the number of digits can not be more than 10\n");
+		que.push("error:You can enter the number of digits can not be more than 10");
 	}
 	return ; 
 }
-
