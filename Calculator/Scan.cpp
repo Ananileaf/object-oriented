@@ -77,7 +77,7 @@ void Scan::ToStringQueue(string input)
 				} 
 			}
 		}
-	    else    //当前字符是符号 
+		else    //当前字符是符号 
 		{
 			if (temp.size()>10) 
 			{ 
