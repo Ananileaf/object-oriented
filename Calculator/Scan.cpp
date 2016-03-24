@@ -60,7 +60,7 @@ void Scan::ToStringQueue(string input)
 			{
 			}
 			else if (temp.size())    //为了防止出现空串而错误将空串存入队列 
-		    {
+			{ 
 					Scan::que.push(temp);    
 					flag_dot = false;
 					temp = "";
