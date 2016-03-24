@@ -50,7 +50,10 @@ void Scan::ToStringQueue(string input)
 		}
 		if (input[i] >= '0' && input[i] <= '9' || input[i] == '.')    
 		{
-			if (input[i] == '.') flag_dot = true;
+			if (input[i] == '.')
+			{
+				flag_dot = true;
+			} 
 			
 			/*如果前面一位字符也是数字,或者当前字符是第一个字符,则先不将temp传入队列*/
 			if (i == 0 || (input[i-1] >= '0' && input[i-1] <= '9' || input[i-1] == '.'))
