@@ -1,18 +1,33 @@
-#include <iostream>
-#include<cstdlib>
+#include "Calculation.h"
 #include"Scan.h"
-#include"Print.h"
+#include <iostream>
+#include<sstream>
+#include<cstring>
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
-int main()
+int main(int argc, char* argv[])	//用cmd传参的方法输入数据
 {
+
 	Scan get_scanf;
-	Print put_printf;
-	
-	/*调用 GetString() 函数,利用其返回值将输入的字符串传递给 ToStringQueue() 函数*/
-	get_scanf.ToStringQueue(get_scanf.GetString());	
-	put_printf.que = get_scanf.que;
-	put_printf.putqueue();    //调用函数输出分好的数字与字符 
-	system("pause");
+	if (strcmp(argv[1],"-a") == 0)
+	{
+		cout << argv[2] << " = ";
+		get_scanf.ToStringQueue(argv[2]);	//含有"-a"情况数据为第三个参数
+	}
+	else
+	{
+		get_scanf.ToStringQueue(argv[1]);
+	}
+
+	if (!get_scanf.que.empty())		//令空队列表示存在数字超过10位
+	{
+		Calculation *cal = new Calculation;
+		cal -> Calculate(get_scanf.que);	//计算
+	}
+	else
+	{
+		cout << "error:You can enter the number of digits can not be more than 10!" << endl;
+	}
 }
 
