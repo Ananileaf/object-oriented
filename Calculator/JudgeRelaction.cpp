@@ -3,13 +3,13 @@
 using namespace std;
 JudgeRelaction::JudgeRelaction()
 {
-	p['+'] = 0;
-	p['-'] = 1;
-	p['*'] = 2;
-	p['/'] = 3;
-	p['('] = 4;
-	p[')'] = 5;
-	p['#'] = 6;
+	p["+"] = 0;
+	p["-"] = 1;
+	p["*"] = 2;
+	p["/"] = 3;
+	p["("] = 4;
+	p[")"] = 5;
+	p["#"] = 6;
 	
 						//+-*/()#  Êúop1,ºáop2
 	strcpy(OprRelation[0],">><<<>>");//'+'
@@ -53,7 +53,7 @@ bool JudgeRelaction::JudIfChater(string ch)
 **************************************************************/
 char JudgeRelaction::JudPrChater(string opr1,string opr2)
 {
-	char ep = OprRelation[p[opr1[0]]][p[opr2[0]]];
+	char ep = OprRelation[p[opr1]][p[opr2]];
 	return ep;
 }
 

@@ -23,7 +23,7 @@ class JudgeRelaction
 		char JudPrChater(string op1,string op2);
 	private:
 		char OprRelation[7][7];
-		int p[256];
+		map<string,int> p;
 };
 
 #endif
