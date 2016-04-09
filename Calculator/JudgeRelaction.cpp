@@ -31,7 +31,7 @@ JudgeRelaction::JudgeRelaction()
 bool JudgeRelaction::JudIfChater(string ch)
 {
 	if (ch == "+" || ch == "-" || ch == "*"  || ch == "/"
-	        || ch == "(" || ch ==")" || ch == "#")
+	    || ch == "(" || ch ==")" || ch == "#")
 	{
 		return true;
 	}
