@@ -68,7 +68,7 @@ void Scan::ToStringQueue(string input)
 		que.push("0");   			//如果开头是-()形式,特殊处理为0-()的形式
 	}
 	
-	if	(!Judge(input[0]))
+	if	(!Judge(input[0]))		
 	{
 		flag_match = false;
 	}
@@ -76,7 +76,7 @@ void Scan::ToStringQueue(string input)
 	for (int i = 1; i < n; i++)
 	{
 			
-		if	(!Judge(input[i]))
+		if	(!Judge(input[i]))		//是否存在非法字符 
 		{
 			flag_match = false;
 			break;
@@ -122,7 +122,7 @@ void Scan::ToStringQueue(string input)
 		else     	//如果当前字符是符号,将temp传入队列，更新coun;
 		{
 		
-			if(input[i] == '(')			
+			if(input[i] == '(')			//判断()匹配 
 			{
 				match.push('(');
 			} 
@@ -186,7 +186,7 @@ void Scan::ToStringQueue(string input)
 
 	Scan::que.push(temp);
 	temp = "";
-	if (flag || !flag_match || !match.empty())		//存在超过10位小数,为了后续判断输出error,清空队列
+	if (flag || !flag_match || !match.empty())		//存在超过10位小数,或者不匹配情况，为了后续判断输出error,清空队列
 	{
 		while (!que.empty())
 		{
