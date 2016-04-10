@@ -27,7 +27,7 @@ int main(int argc, char* argv[])	//用cmd传参的方法输入数据
 	}
 	else
 	{
-		cout << "error:You can enter the number of digits can not be more than 10!" << endl;
+		cout << "error!" << endl;
 	}
 }
 

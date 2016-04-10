@@ -21,6 +21,7 @@ class Scan
 		~Scan();
 		void ToStringQueue(string input); 
 		queue<string> que;
+		bool Judge(char temp); 
 	private:
 		string s;
 		
