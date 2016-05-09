@@ -3,6 +3,7 @@
 #include"Print.h"
 #include"CheckInput.h"
 #include<iostream>
+#include<cstdio> 
 #include<cstring>
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
@@ -35,6 +36,7 @@ int main(int argc, char* argv[])	//用cmd传参的方法输入数据
 			{
 				put_printf.PrErTpye(get_scanf.ErrorType);	//输出计算结果
 			}
+			
 			str = "";
 			delete ck;
 		}
