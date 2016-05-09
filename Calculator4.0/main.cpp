@@ -11,7 +11,7 @@ using namespace std;
 int main(int argc, char* argv[])	//用cmd传参的方法输入数据
 {
 
-	if (strcmp(argv[1],"-f") == 0)		//"-f" 用文件输入输出
+	if (strcmp(argv[1],"-f") == 0)	//"-f" 用文件输入输出
 	{
 		freopen(argv[2],"r",stdin);
 		freopen(argv[3],"w",stdout);
@@ -19,16 +19,16 @@ int main(int argc, char* argv[])	//用cmd传参的方法输入数据
 		while (cin >> str)
 		{
 			
-			/*定义在循环内,缩小使用范围,代替每次的初始化，避免造成多次输出留下问题 */ 
+			/*定义在循环内,缩小变量作用域,代替每次的初始化，避免造成多次输出留下问题 */ 
 			Scan get_scanf;			
 			Print put_printf;
 			get_scanf.ToStringQueue(str);
 			CheckInput *ck = new CheckInput;
 			get_scanf.ErrorType += ck->CheckIfCorrect(get_scanf.que); //存入输入错误类型
-			if (get_scanf.ErrorType == "")		    //判断输入是否合法,无错误类型则合法
+			if (get_scanf.ErrorType == "")					//判断输入是否合法,无错误类型则合法
 			{
 				Calculation *cal = new Calculation;
-				cal->Calculate(get_scanf.que);	//计算
+				cal->Calculate(get_scanf.que);				//计算
 				put_printf.PrResult(cal->result);
 				delete  cal;
 			}
